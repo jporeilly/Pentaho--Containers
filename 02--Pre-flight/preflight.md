@@ -118,3 +118,5 @@ sudo cp harbor.yml.tmpl harbor.yml
 sudo nano harbor.yml
 ```
 Note: the configuration is fine for demo environments. For production it is highly recommended to generate a SSL certificate and key.
+* locally setup FQDN harbor.example.com to access admin UI
+* update /etc/hosts with 10.0.0.101   harbor.skytap.example
