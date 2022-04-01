@@ -8,9 +8,9 @@ This reference section covers:
   * Setup of Pentaho Data Integration.
 
 
-#### Downloads
+#### Download Packages from Customer Support Portal
 All files required for installation are available in the release folder and can be found in the link below.  
-https://hcpanywhere.hitachivantara.com/a/PWPVYtZj1UovY9VO/e52a0db2-ad14-4673-941b-c304c2b108b2?l
+https://
 
 <font color='green'>The required packages have been downloaded.</font>  
 
