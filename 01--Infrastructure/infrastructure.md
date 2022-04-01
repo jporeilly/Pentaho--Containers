@@ -26,7 +26,7 @@ Domain Name: skytap.example
 | Server Name               | Host              |  IP address | OS               |
 | ------------------------- | ------------------| ----------- | ---------------- |
 | Data Integration 9.3      | pdi               | 10.0.0.1    | Ubuntu 20.04     |
-| Pentaho Server EE 9.3     | pentaho-server    | 10.0.0.101  | Ubuntu 20.04     |    
+| Pentaho Server EE 9.3     | harbor            | 10.0.0.101  | Ubuntu 20.04     |    
 |
 
 VM sequence: 
@@ -55,7 +55,7 @@ sudo reboot
 
 ### <font color='red'>Pentaho Data Integration & Server</font>  
 
-This server has been configured with an 'pentaho' user with sudo privileges. 
+This server has been configured with 'pentaho' user with sudo privileges. 
 
 <font color='teal'>The Pentaho Server 9.3 has been configured.</font>  
 

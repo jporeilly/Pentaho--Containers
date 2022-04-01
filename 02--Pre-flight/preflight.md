@@ -57,54 +57,64 @@ Docker Compose is a command-line tool for managing multiple Docker containers. I
 
 ``install docker-compose:``
 ```
-apt-get install docker-compose
+sudo apt-get install docker-compose
 ```
-``edit the env.properties file and enter the following values:``
+``check the version installed:``
 ```
-installer_node_hostname=installer.skytap.example
-installer_node_ip=10.0.0.99
-cluster_node_hostname=pentaho-server-1.skytap.example
-cluster_node_ip=10.0.0.1
-pem_file_name=id_rsa
-ansible_user=k8s
+docker-compose --version
 ```
-``to define the extra-vars.yml, execute:``
-```
-./apply_env_properties.sh
-```
-Note: You may have to change the permission: sudo chmod +ax apply_env_properties.sh  
+Note: This option will not guarantee that you downloading the latest docker-compose version.
 
-``check extra-vars.yml``
+On the GitHub repository, you will get the updates of Docker Compose, which might not be available on the standard Ubuntu repository. At the time of this writing this workshop, the most current stable version is 2.4.0.
 
----
-
-<em>Run the playbook - download_kubespray.yml</em>   
-Kubernetes clusters can be created using various automation tools. Kubespray is a composition of Ansible playbooks, inventory, provisioning tools, and domain knowledge for generic OS/Kubernetes clusters configuration management tasks. 
-
-Kubespray provides:
-* a highly available cluster
-* composable attributes
-* support for most popular Linux distributions
-
-``run the download_kubespray.yml playbook:``
+``download latest:``
 ```
-cd /etc/ansible/playbooks
-ansible-playbook -i hosts-skytap.yml --extra-vars="@extra-vars.yml" -b -v download_kubespray.yml
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+sudo mkdir -p $DOCKER_CONFIG/cli-plugins
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 ```
-Note: check that the hosts-skytap.yml & extra-vars.yml have been copied.
+Note: saves the file in: ~/.docker/cli-plugins directory, under the name docker-compose.  
 
-There is a sample inventory in the inventory folder. You need to copy that and name your whole cluster (e.g. mycluster). The repository has already provided you the inventory builder to update the Ansible inventory file.  
-
-``copy inventory/sample as inventory/mycluster:``
+``change the file permission:``
 ```
-cd /installers/kubespray-release-2.14/inventory
-sudo mkdir mycluster
-cd ..
-sudo chown -R installer mycluster
-sudo cp -rfp sample mycluster
-declare -a IPS=(10.0.0.101 10.0.0.102 10.0.0.103)
-CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
+sudo chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+reboot
 ```
-``check inventory/mycluster/hosts.yaml``
+``verify the installed version:``
+```
+docker compose --version
+```
 
 ---
+
+<em>Install Harbor</em>   
+Harbor is an open source registry that secures artifacts with policies and role-based access control, ensures images are scanned and free from vulnerabilities, and signs images as trusted.  
+
+Harbor, a CNCF Graduated project, delivers compliance, performance, and interoperability to help you consistently and securely manage artifacts across cloud native compute platforms like Kubernetes and Docker. At the time of this writing this workshop, the most current stable version is 2.4..
+
+  > For further details: https://goharbor.io/
+
+<font color='teal'>Harbor has already been installed and configured.</font>
+
+``download Harbor:``
+```
+sudo wget https://github.com/goharbor/harbor/releases/download/v2.4.1/harbor-offline-installer-v2.4.2.tgz
+```
+``extract Harbor:``
+```
+sudo tar -xvzf harbor-offline-installer-v2.4.1.tgz
+```
+``configure Harbor:``
+```
+cd harbor
+ls
+```
+``copy harbor.yml.tmpl harbor.yml:``
+```
+sudo cp harbor.yml.tmpl harbor.yml
+```
+``edit the harbor.yml:``
+```
+sudo nano harbor.yml
+```
+Note: the configuration is fine for demo environments. For production it is highly recommended to generate a SSL certificate and key.
