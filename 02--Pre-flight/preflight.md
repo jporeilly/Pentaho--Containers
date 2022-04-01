@@ -1,69 +1,63 @@
 ## <font color='red'>Preflight - Hardware & Utils</font>  
 
-The following playbooks configure the cluster nodes and installs k8s-1.18.10 using kubespray-2.14.
+The following pre-requisites configure the Pentaho Server and Data Integration 9.3 cluster nodes and installs k8s-1.18.10 using kubespray-2.14.
 
-Prerequisites for the CentOS7 machines:
-* A public key generated on your Ansible Controller
-* Key copied to hosts
-* SSH passwordless access on Nodes with root permissions
+Prerequisites for the Pentaho Server 9.3 machine:
+* Docker 
+* Docker Compose
+* Harbor
 
-The following playbooks are run:  
-
-#### pre-flight_hardware.yml
-* Update packages
-* Install common packages
-* Disable SELinux
-* Turn off firewall
-* Set hostname
-* Reboot Nodes
-
-#### extra-vars.yml
-* Configure the env.properties with required values
-* Run the apply_env_properties.sh
-* Check the extra-vars.yml values
-
-#### download_kubespray.yml
-* Create the release directory
-* Unpacks kubespray-2.14
-
-#### cluster.yml
-* installs and configures k8s-1.18.10
+Prerequisites for the Pentaho Data Integration 9.3 machine:
 
 ---
 
-<em>Run the playbook - pre-flight_hardware.yml</em>  
-This will update, install and configure the various required packages.
+<em>Install Docker.io</em>  
+Since Harbor will be deployed as docker containers, Docker needs to be first installed.
 
-``run the playbook - pre-flight_hardware.yml:``
+``remove any previous Docker files:``
 ```
-cd /etc/ansible/playbooks
-ansible-playbook pre-flight_hardware.yml
+sudo apt-get remove docker docker-engine docker.io
 ```
-Note the required vars:  
-- ansible_ssh_private_key_file: "~/.ssh/id_rsa"  
-- ansible_ssh_private_key_file_name: "id_rsa"  
-- ansible_user: k8s  
-- change_dns: true  
-- dns_server: 10.0.0.254  <font color='green'> # SkyTap DNS </font> 
-- ansible_python_interpreter: /usr/bin/python  
+``check system is up-to-date:``
+```
+sudo apt-get update
+```
+``install Docker:``
+```
+ sudo apt install docker.io
+```
+``install all the dependency packages:``
+```
+sudo snap install docker
+```
+``check the version installed:``
+```
+docker --version
+```
+``test pull image:``
+```
+sudo docker run hello-world
+```
+``check image has been pulled:``
+```
+sudo docker images
+```
+``check containers:``
+```
+sudo docker ps
+```
 
-Note: if you are getting a mismatch on the urllib3 or chadet:
-```
-sudo python3 -m pip install --upgrade requests
-```
 
 ---
 
-<em>Define the playbook - extra-vars.yml</em>   
-Kubespray has a bunch a defualt values that need to be replaced by the required values defined a s placeholders in the env.properties file.
+<em>Install Docker Compose</em>   
+Docker Compose is a command-line tool for managing multiple Docker containers. It is a tool for building isolated containers through the YAML file to modify your application’s services.
 
-<font color='green'>The extra-vars.yml has been created.</font>
+<font color='teal'>Docker-compose has already been installed and configured.</font>
 
-``browse the following files:``
+``install docker-compose:``
 ```
-sudo cat env.properties
-sudo cat apply_env_properties
-sudo cat extra-vars.yml 
+apt-get install docker-compose
 ```
 ``edit the env.properties file and enter the following values:``
 ```

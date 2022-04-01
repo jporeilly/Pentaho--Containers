@@ -12,7 +12,7 @@ This reference section covers:
 All files required for installation are available in the release folder and can be found in the link below.  
 https://
 
-<font color='green'>The required packages have been downloaded.</font>  
+<font color='teal'>The required packages have been downloaded.</font>  
 
 ---
 
@@ -57,7 +57,7 @@ sudo reboot
 
 This server has been configured with an 'pentaho' user with sudo privileges. 
 
-<font color='green'>The Ansible Controller has been installed and configured.</font>  
+<font color='teal'>The Pentaho Server 9.3 has been configured.</font>  
 
 ``update (log in as root):``
 ```
@@ -125,7 +125,7 @@ Enusre that the following packages are also installed and configured:
 * visual studio code - just for training purposes
 * tree - visualize directories
 
-<font color='green'>The packages have been installed and configured.</font>  
+<font color='teal'>The required packages have been installed and configured.</font>  
 
 ---
 
