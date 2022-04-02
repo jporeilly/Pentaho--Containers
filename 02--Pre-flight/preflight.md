@@ -11,14 +11,6 @@ Prerequisites for the Pentaho Data Integration 9.3 machine:
 
 
 
-
-
-
-
-
-
-
-
 ---
 
 <em>Install Harbor</em>  
@@ -42,3 +34,9 @@ When the script reports Harbor Installation Complete, log in to your new Harbor 
 
 User name: admin
 Password: Harbor12345
+
+After deployment, you can enable HTTPS and Notary by reconfiguring the installation. 
+
+  > for further details: https://goharbor.io/docs/2.0.0/install-config/configure-https/
+
+---  
