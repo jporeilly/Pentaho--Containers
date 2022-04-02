@@ -14,6 +14,7 @@ Prerequisites for the Pentaho Data Integration 9.3 machine:
 ---
 
 <em>Install Harbor</em>  
+
 The Harbor community has provided a script that with a single command prepares an Ubuntu 20.04 machine for Harbor and deploys the latest stable version.  
 This script installs Harbor with an HTTP connection, Clair, and the Chart Repository Service. It does not install Notary, which requires HTTPS.  
 
@@ -39,7 +40,49 @@ After deployment, you can enable HTTPS and Notary by reconfiguring the installat
 
   > for further details: https://goharbor.io/docs/2.0.0/install-config/configure-https/
 
----  
+--- 
+
+<em>Configure HTTPS connection</em>
+
+In a production environment, you should obtain a certificate from a CA. In a test or development environment, you can generate your own CA. To generate a CA certficate, run the following commands.
+
+``generate a CA certificate private key:``
+```
+openssl genrsa -out ca.key 4096
+```
+``enter cert details:``
+```
+#Syntax to generate cert and key: 
+openssl req \
+    -newkey rsa:4096 -nodes -sha256 -keyout domain.key \
+    -x509 -days 365 -out domain.crt \
+    -subj "/CN=localhost/C=<Country>/ST=<State>/L=<Location>/O=<Organization>"
+```
+```
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout harbor.skytap.example.key -x509 -days 365 -out harbor.skytap.example.crt -subj "/CN=harbor.skytap.example/C=UK/ST=London/L=London/O=HitachiVantara"
+```
+``configure the Harbor Installer - harbor.yml:``
+hostname — set this to either the IP address or the domain of your hosting server.
+harbor_admin_password — set this to a strong, unique password.
+
+``edit the paths of the keys to reflect as shown in below example:``
+```
+hostname: harbor.skytap.example
+# http related config
+http:
+# port for http, default is 80. If https enabled, this port will redirect to https port
+port: 80
+# https related config
+https:
+# https port for harbor, default is 443
+port: 443
+# The path of cert and key files for nginx
+certificate: /etc/ssl/harbor.skytap.example.crt
+private_key: /etc/ssl/harbor.skytap.example.key
+```
+
+
+---
 
 <em>Push & Pull Images to/from Harbor</em>
 
@@ -52,18 +95,16 @@ docker login harbor.skytap.example
 Username: admin
 Password: Harbor12345
 ```
+Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:  
 
-Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:
-``Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.``
+```Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
 
 
-# Created a new project named bbanews-test
-# Tag an Image:
-#Syntax:  docker tag SOURCE_IMAGE[:TAG] registry.captainvirtualization.in/bbabews-test/REPOSITORY[:TAG]
-#Ex:
-eknath@registry:~/harbor$ sudo docker tag eknath009/nginx-bbanews:latest registry.captainvirtualization.in/bbabews-test/bbanews:latest
-#To list the tagged image
-docker images
-# Push the Image into Harbor registry
-#Syntax: docker push registry.captainvirtualization.in/bbabews-test/REPOSITORY[:TAG]
-eknath@registry:~/harbor$ sudo docker push registry.captainvirtualization.in/bbabews-test/bbanews:latest
+``create a new project:``
+```
+in the UI create a project called 'busybox`
+```
+``pull the image:``
+```
+docker pull harbor.skytap.example/library/busybox:latest
+```
