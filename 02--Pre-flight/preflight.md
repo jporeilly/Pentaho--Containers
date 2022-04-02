@@ -65,10 +65,22 @@ in the UI create a project called 'busybox`
 ```
 ``pull the image:``
 ```
-docker pull harbor.skytap.example/library/busybox:latest
+docker pull busybox
+```
+``list the images:``
+```
+docker images
+```
+``hello world in container:``
+```
+docker run busybox echo "hello from busybox"
+```
+``push to harbor:``
 ```
 
+```
 
+---
 
 <em>Configure HTTPS connection</em>
 

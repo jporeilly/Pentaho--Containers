@@ -77,6 +77,7 @@ tar xvf harbor-online-installer-v$HARBORVERSION.tgz
 
 cd harbor
 cp harbor.yml.tmpl harbor.yml
+# comment out https
 sed -i "s/reg.mydomain.com/$IPorFQDN/g" harbor.yml
 sed -e '/port: 443$/ s/^#*/#/' -i harbor.yml
 sed -e '/https:$/ s/^#*/#/' -i harbor.yml
