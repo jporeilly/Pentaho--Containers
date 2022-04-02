@@ -26,15 +26,16 @@ Select whether to deploy Harbor using the IP address or FQDN of the host machine
 
 This is the address at which you access the Harbor interface and the registry service.
 
-To use the IP address, enter 1.
-To use the FQDN, enter 2.
-``enter option 2``
+To use the IP address, enter 1.  
+To use the FQDN, enter 2.  
+
+``enter option 2``  
 When the script reports Harbor Installation Complete, log in to your new Harbor instance.
 
   > browse to: http://harbor.skytap.example
 
-User name: admin
-Password: Harbor12345
+User name: admin  
+Password: Harbor12345  
 
 After deployment, you can enable HTTPS and Notary by reconfiguring the installation. 
 
@@ -42,7 +43,36 @@ After deployment, you can enable HTTPS and Notary by reconfiguring the installat
 
 --- 
 
+<em>Push & Pull Images to/from Harbor</em>
+
+Once logged in, you should be able to create new projects, pull and push images into Harbor. 
+
+``log in to Harbor with CLI:``
+```
+cd harbor
+docker login harbor.skytap.example
+Username: admin
+Password: Harbor12345
+```
+Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:  
+
+```Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
+
+
+``create a new project:``
+```
+in the UI create a project called 'busybox`
+```
+``pull the image:``
+```
+docker pull harbor.skytap.example/library/busybox:latest
+```
+
+
+
 <em>Configure HTTPS connection</em>
+
+<font color='teal'>This section is for reference only.</font>
 
 In a production environment, you should obtain a certificate from a CA. In a test or development environment, you can generate your own CA. To generate a CA certficate, run the following commands.
 
@@ -83,28 +113,3 @@ private_key: /etc/ssl/harbor.skytap.example.key
 
 
 ---
-
-<em>Push & Pull Images to/from Harbor</em>
-
-Once logged in, you should be able to create new projects, pull and push images into Harbor. 
-
-``log in to Harbor with CLI:``
-```
-cd harbor
-docker login harbor.skytap.example
-Username: admin
-Password: Harbor12345
-```
-Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:  
-
-```Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
-
-
-``create a new project:``
-```
-in the UI create a project called 'busybox`
-```
-``pull the image:``
-```
-docker pull harbor.skytap.example/library/busybox:latest
-```

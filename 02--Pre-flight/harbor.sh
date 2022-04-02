@@ -31,12 +31,12 @@ do
      esac
 done
 
-# Housekeeping
+# Infrastructure
 apt update -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 ufw disable #Do Not Do This In Production
-echo "Housekeeping complete"
+echo "Infrastructure update completed .."
 
 #Install Latest Stable Docker Release
 apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
@@ -68,7 +68,7 @@ COMPOSEVERSION=$(curl -s https://github.com/docker/compose/releases/latest/downl
 curl -L "https://github.com/docker/compose/releases/download/v$COMPOSEVERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-echo "Docker Compose Installation done"
+echo "Docker Compose Installation completed .."
 
 #Install Latest Stable Harbor Release
 HARBORVERSION=$(curl -s https://github.com/goharbor/harbor/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
@@ -85,4 +85,4 @@ sed -e '/\/your\/private\/key\/path$/ s/^#*/#/' -i harbor.yml
 
 mkdir /var/log/harbor
 ./install.sh --with-chartmuseum
-echo -e "Harbor Installation Complete \n\nPlease log out and log in or run the command 'newgrp docker' to use Docker without sudo\n\nLogin to your harbor instance:\n docker login -u admin -p Harbor12345 $IPorFQDN"
+echo -e "Harbor Installation Completed \n\nPlease log out and log in or run the command 'newgrp docker' to use Docker without sudo\n\nLogin to your harbor instance:\n docker login -u admin -p Harbor12345 $IPorFQDN"
