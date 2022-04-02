@@ -1,6 +1,21 @@
 #!/bin/bash
 
-#Harbor on Ubuntu 20.04
+# ==============================================================
+# Harbor on Ubuntu 20.04
+# Edit your /etc/hosts file to resolve IP and FQDN. 
+# Pre-requisite steps: disable swap
+#                      disable firewall (demo only)
+# Pre-requistes steps for Docker: 
+#                      apt-transport-https
+#                      ca-certificates 
+#                      curl 
+#                      gnupg-agent 
+#                      software-properties-common
+# Install Docker.
+# Install Docker Compose
+# Install Harbor with Chartmuseum. Comment out HTTPS section.
+# 02/04/2022
+# ==============================================================
 
 #Prompt for the user to ask if the install should use the IP Address or Fully Qualified Domain Name of the Harbor Server
 PS3='Would you like to install Harbor based on IP or FQDN? '

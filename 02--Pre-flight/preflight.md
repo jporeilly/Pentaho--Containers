@@ -9,147 +9,36 @@ Prerequisites for the Pentaho Server 9.3 machine:
 
 Prerequisites for the Pentaho Data Integration 9.3 machine:
 
----
 
-<em>Install Docker.io</em>  
-Since Harbor will be deployed as docker containers, Docker needs to be first installed.
 
-``check system is up-to-date:``
-```
-sudo apt-get update
-```
-``install Docker:``
-```
- sudo apt install docker.io
-```
-``install all the dependency packages:``
-```
-sudo snap install docker
-```
-``check the version installed:``
-```
-docker --version
-```
-``test pull image:``
-```
-sudo docker run hello-world
-```
-``check image has been pulled:``
-```
-sudo docker images
-```
-``check containers:``
-```
-sudo docker ps
-```
 
-To remove Docker:
 
-``determine which packages need to be deleted:``
-```
-dpkg -l | grep -i docker
-```
-``delete packages:``
-```
-sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
-sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce
-```
-``remove remaining files:``
-```
-sudo rm -rf /var/lib/docker /etc/docker
-sudo rm /etc/apparmor.d/docker
-sudo groupdel docker
-sudo rm -rf /var/run/docker.sock
-sudo rm -rf /usr/local/bin/docker-compose
-sudo rm -rf /etc/docker
-sudo rm -rf ~/.docker
-```
+
+
+
+
+
 
 ---
 
-<em>Install Docker Compose</em>   
-Docker Compose is a command-line tool for managing multiple Docker containers. It is a tool for building isolated containers through the YAML file to modify your application’s services.
+<em>Install Harbor</em>  
+The Harbor community has provided a script that with a single command prepares an Ubuntu 20.04 machine for Harbor and deploys the latest stable version.  
+This script installs Harbor with an HTTP connection, Clair, and the Chart Repository Service. It does not install Notary, which requires HTTPS.  
 
-<font color='teal'>Docker-compose has already been installed and configured.</font>
+``run the script:``
+```
+sudo ./harbor.sh
+```
+Select whether to deploy Harbor using the IP address or FQDN of the host machine.
 
-``install docker-compose:``
-```
-sudo apt-get install docker-compose
-```
-``check the version installed:``
-```
-docker-compose --version
-```
-Note: This option will not guarantee that you downloading the latest docker-compose version.
+This is the address at which you access the Harbor interface and the registry service.
 
-On the GitHub repository, you will get the updates of Docker Compose, which might not be available on the standard Ubuntu repository. At the time of this writing this workshop, the most current stable version is 2.4.0.
+To use the IP address, enter 1.
+To use the FQDN, enter 2.
+``enter option 2``
+When the script reports Harbor Installation Complete, log in to your new Harbor instance.
 
-``download latest:``
-```
-DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-sudo mkdir -p $DOCKER_CONFIG/cli-plugins
-sudo curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
-```
-Note: saves the file in: ~/.docker/cli-plugins directory, under the name docker-compose.  
+  > browse to: http://harbor.skytap.example
 
-``change the file permission:``
-```
-sudo chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
-reboot
-```
-``verify the installed version:``
-```
-docker compose --version
-```
-
-To remove Docker Compose:
-
-``delete binary packages:``
-```
-sudo rm /usr/local/bin/docker-compose
-```
-``delete package:``
-```
-sudo apt remove docker-compose
-```
-``remove dependencies:``
-```
-sudo apt autoremove
-```
-
----
-
-<em>Install Harbor</em>   
-Harbor is an open source registry that secures artifacts with policies and role-based access control, ensures images are scanned and free from vulnerabilities, and signs images as trusted.  
-
-Harbor, a CNCF Graduated project, delivers compliance, performance, and interoperability to help you consistently and securely manage artifacts across cloud native compute platforms like Kubernetes and Docker. At the time of this writing this workshop, the most current stable version is 2.4..
-
-  > For further details: https://goharbor.io/
-
-<font color='teal'>Harbor has already been installed and configured.</font>
-
-``download Harbor:``
-```
-sudo wget https://github.com/goharbor/harbor/releases/download/v2.4.1/harbor-offline-installer-v2.4.2.tgz
-```
-``extract Harbor:``
-```
-sudo tar -xvzf harbor-offline-installer-v2.4.1.tgz
-```
-``configure Harbor:``
-```
-cd harbor
-ls
-```
-``copy harbor.yml.tmpl harbor.yml:``
-```
-sudo cp harbor.yml.tmpl harbor.yml
-```
-``edit the harbor.yml:``
-```
-sudo nano harbor.yml
-```
-
-Harbor does not ship with any certificates.the configuration is fine for demo environments. For production environments it is highly recommended to generate a SSL certificate and key.
-* locally setup FQDN harbor.example.com to access admin UI
-* update /etc/hosts with 10.0.0.101   harbor.skytap.example
+User name: admin
+Password: Harbor12345
