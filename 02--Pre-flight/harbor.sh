@@ -11,7 +11,7 @@
 #                      curl 
 #                      gnupg-agent 
 #                      software-properties-common
-# Install Docker.
+# Install Docker. 
 # Install Docker Compose
 # Install Harbor with Chartmuseum. Comment out HTTPS section.
 # 02/04/2022

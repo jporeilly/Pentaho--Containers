@@ -40,3 +40,30 @@ After deployment, you can enable HTTPS and Notary by reconfiguring the installat
   > for further details: https://goharbor.io/docs/2.0.0/install-config/configure-https/
 
 ---  
+
+<em>Push & Pull Images to/from Harbor</em>
+
+Once logged in, you should be able to create new projects, pull and push images into Harbor. 
+
+``log in to Harbor with CLI:``
+```
+cd harbor
+docker login harbor.skytap.example
+Username: admin
+Password: Harbor12345
+```
+
+Harbor optionally supports HTTP connections, however the Docker client always attempts to connect to registries by first using HTTPS. If Harbor is configured for HTTP, you must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:
+``Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.``
+
+
+# Created a new project named bbanews-test
+# Tag an Image:
+#Syntax:  docker tag SOURCE_IMAGE[:TAG] registry.captainvirtualization.in/bbabews-test/REPOSITORY[:TAG]
+#Ex:
+eknath@registry:~/harbor$ sudo docker tag eknath009/nginx-bbanews:latest registry.captainvirtualization.in/bbabews-test/bbanews:latest
+#To list the tagged image
+docker images
+# Push the Image into Harbor registry
+#Syntax: docker push registry.captainvirtualization.in/bbabews-test/REPOSITORY[:TAG]
+eknath@registry:~/harbor$ sudo docker push registry.captainvirtualization.in/bbabews-test/bbanews:latest
