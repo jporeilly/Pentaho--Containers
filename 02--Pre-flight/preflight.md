@@ -14,10 +14,6 @@ Prerequisites for the Pentaho Data Integration 9.3 machine:
 <em>Install Docker.io</em>  
 Since Harbor will be deployed as docker containers, Docker needs to be first installed.
 
-``remove any previous Docker files:``
-```
-sudo apt-get remove docker docker-engine docker.io
-```
 ``check system is up-to-date:``
 ```
 sudo apt-get update
@@ -47,6 +43,27 @@ sudo docker images
 sudo docker ps
 ```
 
+To remove Docker:
+
+``determine which packages need to be deleted:``
+```
+dpkg -l | grep -i docker
+```
+``delete packages:``
+```
+sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
+sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce
+```
+``remove remaining files:``
+```
+sudo rm -rf /var/lib/docker /etc/docker
+sudo rm /etc/apparmor.d/docker
+sudo groupdel docker
+sudo rm -rf /var/run/docker.sock
+sudo rm -rf /usr/local/bin/docker-compose
+sudo rm -rf /etc/docker
+sudo rm -rf ~/.docker
+```
 
 ---
 
@@ -85,6 +102,21 @@ reboot
 docker compose --version
 ```
 
+To remove Docker Compose:
+
+``delete binary packages:``
+```
+sudo rm /usr/local/bin/docker-compose
+```
+``delete package:``
+```
+sudo apt remove docker-compose
+```
+``remove dependencies:``
+```
+sudo apt autoremove
+```
+
 ---
 
 <em>Install Harbor</em>   
@@ -117,6 +149,7 @@ sudo cp harbor.yml.tmpl harbor.yml
 ```
 sudo nano harbor.yml
 ```
-Note: the configuration is fine for demo environments. For production it is highly recommended to generate a SSL certificate and key.
+
+Harbor does not ship with any certificates.the configuration is fine for demo environments. For production environments it is highly recommended to generate a SSL certificate and key.
 * locally setup FQDN harbor.example.com to access admin UI
 * update /etc/hosts with 10.0.0.101   harbor.skytap.example
