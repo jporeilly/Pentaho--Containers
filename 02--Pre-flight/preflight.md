@@ -1,6 +1,6 @@
 ## <font color='red'>Preflight - Hardware & Utils</font>  
 
-The following pre-requisites configure the Pentaho Server and Data Integration 9.3 cluster nodes and installs k8s-1.18.10 using kubespray-2.14.
+The following pre-requisites configure the Pentaho Server and Data Integration 9.3.
 
 Prerequisites for the Pentaho Server 9.3 machine:
 * Docker 
