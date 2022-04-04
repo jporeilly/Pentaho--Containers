@@ -59,7 +59,7 @@ Harbor optionally supports HTTP connections, however the Docker client always at
 
 ```Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
 
-Resolution: ensure the /etc/docker/daemon.json has the IP or FQDN 
+Resolution: ensure the /etc/docker/daemon.json has the IP or FQDN. Ensure all the containers have started. 
 
 ```
 {
@@ -83,6 +83,8 @@ docker images
 ```
 docker run busybox echo "hello from busybox"
 ```
+switch to the Harbor UI and select 
+
 ``push to harbor:``
 ```
 
