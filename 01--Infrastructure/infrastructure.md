@@ -4,7 +4,7 @@ The following pre-requiste steps have been completed and are listed just for Lab
 This reference section covers:
   * Setup SkyTap Lab environment. 
      
-  * Setup of Pentaho EE 9.3 Master / Worker Nodes.  
+  * Setup of Pentaho Server EE 9.3 Master / Worker Nodes.  
   * Setup of Pentaho Data Integration.
 
 
@@ -33,7 +33,7 @@ VM sequence:
 * Pentaho Server EE 9.3
 * Pentaho Data Integration 9.3 
 
-![SkyTap Lab](../assets/skytap_lab.png)
+![SkyTap Lab](.\assets\skytap_lab.png)
 
 ---
 
@@ -42,7 +42,7 @@ VM sequence:
 These servers were deployed as Ubuntu Desktop 20.04LTS images.
 Each of the nodes in the cluster has been configured with a 'pentaho' user with sudo priviliges.
 
-<font color='green'>The Master and Worker Nodes have been configured with the required user.</font>  
+<font color='teal'>Pentaho Server EE 9.3 has been configured.</font>  
 
 ``update all servers:``
 ```
@@ -57,7 +57,7 @@ sudo reboot
 
 This server has been configured with 'pentaho' user with sudo privileges. 
 
-<font color='teal'>The Pentaho Server 9.3 has been configured.</font>  
+<font color='teal'>Pentaho Data Integration 9.3 has been configured.</font>  
 
 ``update (log in as root):``
 ```
