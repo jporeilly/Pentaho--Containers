@@ -88,19 +88,9 @@ docker run busybox echo "hello from busybox"
 
 In a production environment, you should obtain a certificate from a CA. In a test or development environment, you can generate your own CA. To generate a CA certficate, run the following commands.
 
-<<<<<<< HEAD
-``download Harbor:``
-```
-sudo wget https://github.com/goharbor/harbor/releases/download/v2.4.2/harbor-offline-installer-v2.4.2.tgz
-```
-``extract Harbor:``
-```
-sudo tar -xvzf harbor-offline-installer-v2.4.2.tgz
-=======
 ``generate a CA certificate private key:``
 ```
 openssl genrsa -out ca.key 4096
->>>>>>> bfc49201977b694c5ea66b9f38c6a6896b42f7b3
 ```
 ``enter cert details:``
 ```
@@ -132,19 +122,6 @@ port: 443
 certificate: /etc/ssl/harbor.skytap.example.crt
 private_key: /etc/ssl/harbor.skytap.example.key
 ```
-<<<<<<< HEAD
-Note: the configuration is fine for demo environments. For production it is highly recommended to generate a SSL certificate and key.
-* locally setup FQDN harbor.example.com to access admin UI
-* update /etc/hosts with 10.0.0.101   harbor.skytap.example
-* comment out SSL
-
-``install harbor:``
-```
-./install.sh
-```
-Note: the script will perform a bunch of checks
-=======
 
 
 ---
->>>>>>> bfc49201977b694c5ea66b9f38c6a6896b42f7b3
