@@ -22,17 +22,41 @@ sudo apt-get remove docker docker-engine docker.io
 ```
 sudo apt-get update
 ```
+``install pre-requisites:``
+```
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+```
+``add the GPG key for the official Docker repository:``
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+``add Docker to APT repositories:``
+```
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+```
+``check repo:``
+```
+apt-cache policy docker-ce
+```
 ``install Docker:``
 ```
- sudo apt install docker.io
+ sudo apt install docker-ce
 ```
-``install all the dependency packages:``
+``check status:``
 ```
-sudo snap install docker
+sudo systemctl status docker
 ```
 ``check the version installed:``
 ```
 docker --version
+```
+``create a Docker group:``
+```
+sudo groupadd docker
+```
+``add user:``
+```
+sudo usermod -aG docker ${USER}
 ```
 ``test pull image:``
 ```
@@ -98,11 +122,11 @@ Harbor, a CNCF Graduated project, delivers compliance, performance, and interope
 
 ``download Harbor:``
 ```
-sudo wget https://github.com/goharbor/harbor/releases/download/v2.4.1/harbor-offline-installer-v2.4.2.tgz
+sudo wget https://github.com/goharbor/harbor/releases/download/v2.4.2/harbor-offline-installer-v2.4.2.tgz
 ```
 ``extract Harbor:``
 ```
-sudo tar -xvzf harbor-offline-installer-v2.4.1.tgz
+sudo tar -xvzf harbor-offline-installer-v2.4.2.tgz
 ```
 ``configure Harbor:``
 ```
@@ -120,3 +144,10 @@ sudo nano harbor.yml
 Note: the configuration is fine for demo environments. For production it is highly recommended to generate a SSL certificate and key.
 * locally setup FQDN harbor.example.com to access admin UI
 * update /etc/hosts with 10.0.0.101   harbor.skytap.example
+* comment out SSL
+
+``install harbor:``
+```
+./install.sh
+```
+Note: the script will perform a bunch of checks
