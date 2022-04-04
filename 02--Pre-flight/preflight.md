@@ -15,66 +15,10 @@ Prerequisites for the Pentaho Data Integration 9.3 machine:
 
 <em>Install Harbor</em>  
 
-<<<<<<< HEAD
-``remove any previous Docker files:``
-```
-sudo apt-get remove docker docker-engine docker.io
-```
-``check system is up-to-date:``
-```
-sudo apt-get update
-```
-``install pre-requisites:``
-```
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-```
-``add the GPG key for the official Docker repository:``
-```
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-```
-``add Docker to APT repositories:``
-```
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-```
-``check repo:``
-```
-apt-cache policy docker-ce
-```
-``install Docker:``
-```
- sudo apt install docker-ce
-```
-``check status:``
-```
-sudo systemctl status docker
-```
-``check the version installed:``
-```
-docker --version
-```
-``create a Docker group:``
-```
-sudo groupadd docker
-```
-``add user:``
-```
-sudo usermod -aG docker ${USER}
-```
-``test pull image:``
-```
-sudo docker run hello-world
-```
-``check image has been pulled:``
-```
-sudo docker images
-```
-``check containers:``
-=======
 The Harbor community has provided a script that with a single command prepares an Ubuntu 20.04 machine for Harbor and deploys the latest stable version.  
 This script installs Harbor with an HTTP connection, Clair, and the Chart Repository Service. It does not install Notary, which requires HTTPS.  
 
 ``run the script:``
->>>>>>> bfc49201977b694c5ea66b9f38c6a6896b42f7b3
 ```
 sudo ./harbor.sh
 ```
