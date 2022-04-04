@@ -29,7 +29,8 @@ This is the address at which you access the Harbor interface and the registry se
 To use the IP address, enter 1.  
 To use the FQDN, enter 2.  
 
-``enter option 2``  
+``enter option 2:``  
+
 When the script reports Harbor Installation Complete, log in to your new Harbor instance.
 
   > browse to: http://harbor.skytap.example
@@ -58,6 +59,13 @@ Harbor optionally supports HTTP connections, however the Docker client always at
 
 ```Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
 
+Resolution: ensure the /etc/docker/daemon.json has the IP or FQDN 
+
+```
+{
+"insecure-registries" : ["myregistrydomain.com:port", "0.0.0.0"]
+}
+```
 
 ``create a new project:``
 ```
