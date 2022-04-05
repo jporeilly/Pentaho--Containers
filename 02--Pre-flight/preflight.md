@@ -59,7 +59,9 @@ Harbor optionally supports HTTP connections, however the Docker client always at
 
 ```Error response from daemon: Get https://myregistrydomain.com/v1/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
 
-Resolution: ensure the /etc/docker/daemon.json has the IP or FQDN. Ensure all the containers have started. 
+Resolution: 
+* Ensure the /etc/docker/daemon.json has the IP or FQDN. 
+* Ensure all the containers have started. Check containers in Docker section of VSC.
 
 ```
 {
@@ -71,6 +73,8 @@ Resolution: ensure the /etc/docker/daemon.json has the IP or FQDN. Ensure all th
 ```
 in the UI create a project called 'busybox`
 ```
+Switch back to Terminal.
+
 ``pull the image:``
 ```
 docker pull busybox
@@ -83,21 +87,29 @@ docker images
 ```
 docker run busybox echo "hello from busybox"
 ```
-<<<<<<< Updated upstream
-switch to the Harbor UI and select 
-
-=======
 ``tag the image:``
 ```
 docker tag busybox:latest harbor.skytap.example/busybox:latest
 ```
->>>>>>> Stashed changes
 ``push to harbor:``
 ```
 docker push harbor.skytap.example/busybox/busybox:latest
 ```
-* Log back into the Projects/Busybox .. 
+* Log back into Harbor -> Projects -> Busybox .. 
 
+Let's now see if the image can be pulled.
+
+``remove busybox/busybox:latest container:``
+```
+docker image rm harbor.skytap.example/busybox/busybox:latest
+```
+or
+use the Harbor UI..
+``pull image from Harbor:``
+```
+docker pull harbor.skytap.example/busybox/busybox
+```
+Note: it will pull the latest
 
 ---
 

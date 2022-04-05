@@ -18,3 +18,23 @@ Dock Maker 9.3 is a command line tool used to create containers for Pentaho prod
 * Pentaho Server
 * Carte server
 * Pentaho Data Integration
+
+<font color='teal'>Dock Maker 9.3 has been downloaded and copied to ~/docker-maker-9.3.0.0</font>
+
+Install the package by completing these steps.
+
+``run the install script:``
+```
+cd dock-maker-9.3.0.0
+./install.sh
+```
+Note: a console window will appear.
+``accept license:``
+
+``edit the installation path:``
+```
+/home/pentaho/dock-maker-9.3.0.0-422-public
+``
+Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the 
+installation progress is complete, click Quit to exit the Unpack Wizard.
+
