@@ -26,8 +26,8 @@ Select whether to deploy Harbor using the IP address or FQDN of the host machine
 
 This is the address at which you access the Harbor interface and the registry service.
 
-To use the IP address, enter 1.  
-To use the FQDN, enter 2.  
+* IP address, enter 1.  
+* FQDN, enter 2.  
 
 ``enter option 2:``  
 
@@ -83,12 +83,21 @@ docker images
 ```
 docker run busybox echo "hello from busybox"
 ```
+<<<<<<< Updated upstream
 switch to the Harbor UI and select 
 
+=======
+``tag the image:``
+```
+docker tag busybox:latest harbor.skytap.example/busybox:latest
+```
+>>>>>>> Stashed changes
 ``push to harbor:``
 ```
-
+docker push harbor.skytap.example/busybox/busybox:latest
 ```
+* Log back into the Projects/Busybox .. 
+
 
 ---
 
