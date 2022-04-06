@@ -6,23 +6,17 @@ It means Pentaho is required to:
 * In short, adjust to the deployment pattern used as standard in the enterprise
 Hitachi Vantara doesn’t provide an out of the box container image mainly because we believe that each customer and each deployment has specific needs. Our approach is to provide this workshop as a guide for your very specific Pentaho on Kubernetes journey.
 
- 
 #### <font color='red'>Module 01 - Infrastructure</font>
 * Configure SkyTap Lab
-* 
-* 
 
 #### <font color='red'>Module 02 - Pre-flight</font>
-* 
-* 
-* 
-* 
+* Docker
+* Docker-Compose
+* Harbor 
+* Pentaho EE 9.3 software
 
 #### <font color='red'>Module 03 - Pentaho Containers</font>
-* 
-
-#### <font color='red'>Module 04 - Post Installation</font>
-* Post Installation tasks
+* DockMaker
 * Licenses
 
 
