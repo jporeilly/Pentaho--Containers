@@ -35,7 +35,7 @@ done
 apt update -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
-ufw disable #Do Not Do This In Production
+ufw disable # Do not disable in Production.
 echo "Infrastructure update completed .."
 
 #Install Latest Stable Docker Release
