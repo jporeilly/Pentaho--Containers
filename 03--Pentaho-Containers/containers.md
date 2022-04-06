@@ -2,7 +2,7 @@
 
 The following pre-requisites configure the Pentaho Server and Data Integration 9.3.
 
-Prerequisites for Dock Maker 9.3 machine:
+Prerequisites for Dock Maker 9.3:
 * Docker
 * A Docker Hub user account - pull required database images
 * CURL command on host
@@ -34,7 +34,9 @@ Note: a console window will appear.
 ``edit the installation path:``
 ```
 /home/pentaho/dock-maker-9.3.0.0-422-public
-``
+```
 Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the 
 installation progress is complete, click Quit to exit the Unpack Wizard.
+
+
 
