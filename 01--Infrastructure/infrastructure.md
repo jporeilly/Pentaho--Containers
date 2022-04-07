@@ -10,9 +10,15 @@ This reference section covers:
 
 #### Download Packages from Customer Support Portal
 All files required for installation are available in the release folder and can be found in the link below.  
-https://
 
-<font color='teal'>The required packages have been downloaded.</font>  
+  > https://support.pentaho.com/hc/en-us
+
+<font color='teal'>The required packages have been downloaded.</font>
+  
+* pentaho-server-ee-9.3.0.0-427-dist.zip
+* paz-plugin-ee-9.3.0.0-427-dist.zip
+* pir-plugin-ee-9.3.0.0-427-dist.zip
+* pdd-plugin-ee-9.3.0.0-427-dist.zip
 
 ---
 
@@ -53,7 +59,7 @@ sudo reboot
 
 ---
 
-### <font color='red'>Pentaho Data Integration & Server</font>  
+### <font color='red'>Pentaho Data Integration & Pentaho Server</font>  
 
 This server has been configured with 'pentaho' user with sudo privileges. 
 
