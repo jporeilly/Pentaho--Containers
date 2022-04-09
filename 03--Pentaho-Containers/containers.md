@@ -38,5 +38,23 @@ Note: a console window will appear.
 Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the 
 installation progress is complete, click Quit to exit the Unpack Wizard.
 
+---
 
+<em>Pentaho License</em>  
+Set the PENTAHO_INSTALLED_LICENSE_PATH variable so that when you start Pentaho, the licenses can install.  
 
+<font color='red'>If you do not set the variables, Pentaho will not start correctly.</font>
+ 
+``open a terminal window and log in as root:``
+```
+sudo -i
+```
+``edit /etc/environment file:``
+```
+cd /etc/environment
+nano  /etc/environment
+```
+``add the following:``
+```
+export PENTAHO_INSTALLED_LICENSE_PATH=/data/licenses/.installedLicenses.xml
+```
