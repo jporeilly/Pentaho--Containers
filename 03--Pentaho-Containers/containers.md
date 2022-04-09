@@ -6,8 +6,8 @@ Prerequisites for DockMaker:
 * Docker
 * A Docker Hub user account - pull required database images
 * CURL command on host
-* Pentaho EE license - PENTAHO_INSTALLED_LICENSE_PATH=/data/licenses/.installedLicenses.xml
 * Java 8 or 11
+* Pentaho EE license - PENTAHO_INSTALLED_LICENSE_PATH=/data/licenses/.installedLicenses.xml
 
 
 ---
