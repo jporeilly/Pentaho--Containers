@@ -7,13 +7,9 @@ Prerequisites for the Pentaho Server 9.3 machine:
 * Docker Compose
 * Harbor
 
-Prerequisites for the Pentaho Data Integration 9.3 machine:
-
-
-
 ---
 
-<em>Install Harbor</em>  
+<em>Install Docker, Docker-Compose & Harbor</em>  
 
 The Harbor community has provided a script that with a single command prepares an Ubuntu 20.04 machine for Harbor and deploys the latest stable version.  
 This script installs Harbor with an HTTP connection, Clair, and the Chart Repository Service. It does not install Notary, which requires HTTPS.  

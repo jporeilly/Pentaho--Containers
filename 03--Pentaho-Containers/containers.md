@@ -9,37 +9,10 @@ Prerequisites for DockMaker:
 * Java 8 or 11
 * Pentaho EE license - PENTAHO_INSTALLED_LICENSE_PATH=/data/licenses/.installedLicenses.xml
 
-
 ---
 
-<em>Install DockMaker</em>  
-
-DockMaker is a command line tool used to create containers for Pentaho products:
-* Pentaho Server
-* Carte server
-* Pentaho Data Integration
-
-<font color='teal'>DockMaker has been downloaded and copied to ~/dockmaker-9.3.0.0</font>
-
-Install the package by completing these steps.
-
-``run the install script:``
-```
-cd dockmaker-9.3.0.0
-./install.sh
-```
-Note: a console window will appear.
-``accept license:``
-
-``edit the installation path:``
-```
-/home/pentaho/dockmaker-9.3.0.0-422-public
-```
-Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the installation progress is complete, click Quit to exit the Unpack Wizard.
-
----
-
-<em>Pentaho EE License</em>  
+<em>Pentaho EE License</em> 
+ 
 Set the PENTAHO_INSTALLED_LICENSE_PATH variable so that when you start Pentaho, the licenses can install.  
 
 <font color='red'>If you do not set the variables, Pentaho will not start correctly.</font>
@@ -65,3 +38,32 @@ env | grep PENTAHO_INSTALLED_LICENSE_PATH
 ```
 
 ---
+
+<em>Install DockMaker</em>  
+
+DockMaker is a command line tool used to create containers for Pentaho products:
+* Pentaho Server
+* Carte server
+* Pentaho Data Integration
+
+<font color='teal'>DockMaker has been downloaded and copied to ~/dockmaker-9.3.0.0</font>
+
+Install the package by completing these steps.
+
+``run the install script:``
+```
+cd dock-maker-9.3.0.0
+./install.sh
+```
+Note: a console window will appear.
+``accept license:``
+
+``edit the installation path:``
+```
+/home/pentaho/dock-maker-9.3.0.0-422-public
+```
+Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the installation progress is complete, click Quit to exit the Unpack Wizard.
+
+---
+
+<em>DockMaker</em> 
