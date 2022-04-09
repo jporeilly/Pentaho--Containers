@@ -14,7 +14,7 @@ Prerequisites for DockMaker:
 
 <em>Install DockMaker</em>  
 
-Dock Maker 1.0 is a command line tool used to create containers for Pentaho products:
+DockMaker is a command line tool used to create containers for Pentaho products:
 * Pentaho Server
 * Carte server
 * Pentaho Data Integration
@@ -25,7 +25,7 @@ Install the package by completing these steps.
 
 ``run the install script:``
 ```
-cd dock-maker-9.3.0.0
+cd dockmaker-9.3.0.0
 ./install.sh
 ```
 Note: a console window will appear.
@@ -33,10 +33,9 @@ Note: a console window will appear.
 
 ``edit the installation path:``
 ```
-/home/pentaho/dock-maker-9.3.0.0-422-public
+/home/pentaho/dockmaker-9.3.0.0-422-public
 ```
-Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the 
-installation progress is complete, click Quit to exit the Unpack Wizard.
+Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the installation progress is complete, click Quit to exit the Unpack Wizard.
 
 ---
 
