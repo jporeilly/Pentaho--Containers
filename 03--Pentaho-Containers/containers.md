@@ -40,11 +40,11 @@ installation progress is complete, click Quit to exit the Unpack Wizard.
 
 ---
 
-<em>Pentaho License</em>  
+<em>Pentaho EE License</em>  
 Set the PENTAHO_INSTALLED_LICENSE_PATH variable so that when you start Pentaho, the licenses can install.  
 
 <font color='red'>If you do not set the variables, Pentaho will not start correctly.</font>
- 
+
 ``open a terminal window and log in as root:``
 ```
 sudo -i
@@ -58,3 +58,11 @@ nano  /etc/environment
 ```
 export PENTAHO_INSTALLED_LICENSE_PATH=/data/licenses/.installedLicenses.xml
 ```
+Note: You will need to log out and back in to set the variable. 
+
+``verify that the PENTAHO_INSTALLED_LICENSE_PATH variable is set:``
+```
+env | grep PENTAHO_INSTALLED_LICENSE_PATH
+```
+
+---
