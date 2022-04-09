@@ -2,7 +2,7 @@
 
 The following pre-requisites configure the Pentaho Server and Data Integration 9.3.
 
-Prerequisites for Dock Maker 9.3:
+Prerequisites for DockMaker 1.0:
 * Docker
 * A Docker Hub user account - pull required database images
 * CURL command on host
@@ -12,7 +12,7 @@ Prerequisites for Dock Maker 9.3:
 
 ---
 
-<em>Install Dock-Maker 9.3</em>  
+<em>Install DockMaker 1.0</em>  
 
 Dock Maker 9.3 is a command line tool used to create containers for Pentaho products:
 * Pentaho Server
