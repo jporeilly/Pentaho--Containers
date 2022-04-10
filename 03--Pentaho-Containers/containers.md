@@ -81,6 +81,8 @@ the following commands will display the required commands but not execute:
 
 ``build Pentaho Server EE 9.3.0.0:``
 ```
-cd 
-DockMaker -V 9.3.0.0/427/ee -A paz,pdd,pir -U --EULA_ACCEPT=true
+cd dock-maker-9.3.0.0-427-public
+./DockMaker.sh -V 9.3.0.0/427/ee -A paz,pdd,pir -U --EULA_ACCEPT=true
 ```
+Note: if you wish to automate the build add the flag: -X
+
