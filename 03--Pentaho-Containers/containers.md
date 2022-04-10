@@ -66,4 +66,14 @@ Note: The Installation Progress window appears. Progress bars indicate the statu
 
 ---
 
-<em>DockMaker</em> 
+<em>DockMaker</em>
+
+DockMaker is a command line tool for building and deploying Pentaho Containers. 
+DockMaker directories: 
+
+* <font color='teal'>artifactCache:</font> This folder serves as the default storage location for any artifacts that are downloaded or required to setup the image.  The location of this folder can be changed in the DockMaker.properties file.
+* <font color='teal'>containers:</font> This has various files and templates that will be tapped when running the command line tool.
+* <font color='teal'>generatedFiles:</font> This folder is created when the command line tool is executed.  It contains all the file necessary to create a docker image and use docker compose to bring up the containers.
+* <font color='teal'>lib:</font> Dependent libraries.
+
+
