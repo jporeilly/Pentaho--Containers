@@ -60,7 +60,7 @@ Note: a console window will appear.
 
 ``edit the installation path:``
 ```
-/home/pentaho/dock-maker-9.3.0.0-422-public
+/home/pentaho/dock-maker-9.3.0.0-427-public
 ```
 Note: The Installation Progress window appears. Progress bars indicate the status of the installation. When the installation progress is complete, click Quit to exit the Unpack Wizard.
 
@@ -76,4 +76,11 @@ DockMaker directories:
 * <font color='teal'>generatedFiles:</font> This folder is created when the command line tool is executed.  It contains all the file necessary to create a docker image and use docker compose to bring up the containers.
 * <font color='teal'>lib:</font> Dependent libraries.
 
+To build Pentaho EE 9.3.0.0-427 container:
+the following commands will display the required commands but not execute:
 
+``build Pentaho Server EE 9.3.0.0:``
+```
+cd 
+DockMaker -V 9.3.0.0/427/ee -A paz,pdd,pir -U --EULA_ACCEPT=true
+```
